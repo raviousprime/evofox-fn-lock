@@ -1,0 +1,43 @@
+# EvoFox Fn Lock Configuration File
+# Location: /etc/evofox-fn-lock/config.toml or ./config/config.toml
+
+[device]
+# USB Vendor and Product ID (in hex or decimal string).
+# For SEMICO USB Keyboard (EvoFox): 1a2c:4c5e
+vendor_id = "1a2c"
+product_id = "4c5e"
+# Fallback name matching if vendor/product IDs vary
+name = "SEMICO USB Keyboard"
+# Whether to grab the device exclusively (prevents double keystrokes)
+grab = true
+
+[state]
+# File path where Fn Lock state (ON/OFF) is persisted across reboots
+persist_path = "/var/lib/evofox-fn-lock/state.json"
+# Default mode if no state file exists yet: true (Fn Lock ON = media keys) or false (Fn Lock OFF = F1-F12)
+default_fn_lock = true
+
+[hotkey]
+# Hotkey combination to toggle Fn Lock mode on/off.
+# Modifiers must be held down when pressing the trigger key.
+modifiers = ["KEY_LEFTCTRL", "KEY_LEFTALT"]
+trigger = "KEY_F12"
+
+[mapping]
+# Physical F-key -> Emitted event when Fn Lock is ON (Media Mode).
+# When Fn Lock is OFF (Function Mode), physical F1-F12 emit normal KEY_F1-KEY_F12.
+#
+# Verified from hardware descriptor and EvoFox standard layout:
+KEY_F1 = "KEY_CONFIG"           # Media Player / Default Audio Player
+KEY_F2 = "KEY_VOLUMEDOWN"       # Volume Down
+KEY_F3 = "KEY_VOLUMEUP"         # Volume Up
+KEY_F4 = "KEY_MUTE"             # Audio Mute
+KEY_F5 = "KEY_STOPCD"           # Media Stop
+KEY_F6 = "KEY_PREVIOUSSONG"     # Previous Track
+KEY_F7 = "KEY_PLAYPAUSE"        # Play / Pause
+KEY_F8 = "KEY_NEXTSONG"         # Next Track
+KEY_F9 = "KEY_MAIL"             # Mail Client
+KEY_F10 = "KEY_HOMEPAGE"        # Web Browser Homepage
+KEY_F11 = "KEY_FILE"            # File Manager / My Computer
+KEY_F12 = "KEY_CALC"            # Calculator
+
